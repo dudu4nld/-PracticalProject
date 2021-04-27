@@ -37,7 +37,13 @@ public class DataOperate {      //Model模型层 JDBC操作
        
     }
 	public void delete(String id){       //删除学生信息操作
-		
+		try {
+            PreparedStatement preparedStatement=conn.prepareStatement("delete from bookdate where name =?");
+            preparedStatement.setString(1,id);
+            
+        } catch (SQLException throwables) {
+            System.out.println("删除失败！");
+        }
     }
 	
 
