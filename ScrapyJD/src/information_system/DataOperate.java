@@ -29,12 +29,26 @@ public class DataOperate {      //Model模型层 JDBC操作
 	}
 	
 	public void selectall(){      //查看全部图书信息操作
-		
+		String sql="select * from bookdate";
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet resultSet=null;
+	        resultSet=statement.executeQuery(sql);
+        	System.out.println("图书名称"+"\t"+"图书价格"+"\t"+"图书细节");
+	        while (resultSet.next())
+            {	
+	        	System.out.print(resultSet.getString("name")+"\t");
+	        	System.out.print(resultSet.getString("price")+"\t");
+	        	System.out.print(resultSet.getString("detail")+"\t");
+	        	System.out.println();
+            }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		      
     }
 	public void select(String message){     
-
-       
     }
 	public void delete(String id){       //删除学生信息操作
 		try {
@@ -49,7 +63,6 @@ public class DataOperate {      //Model模型层 JDBC操作
             System.out.println("删除失败！");
         }
     }
-	
 
 	public static boolean isNumber(String str){       //判断输入是否为数字
 	    for (int i = str.length();--i>=0;){ 
