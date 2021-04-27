@@ -13,10 +13,14 @@ public class Service {       //菜单类 controller控制层
 	}
 	
 	public void select() { //调用数据库模糊查询
-		
+		System.out.println("请输入需要查询的信息:");
+        String message=input.next();
+        data_operate.select(message);
 	}
 	public void delete() { //调用数据库删除操作
-		
+		System.out.println("请输入删除的图书ID：");
+        String id=input.nextLine();
+        data_operate.delete(id);
 	}
 	
 
