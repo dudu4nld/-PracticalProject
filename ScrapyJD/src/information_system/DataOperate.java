@@ -49,6 +49,22 @@ public class DataOperate {      //Model模型层 JDBC操作
 		      
     }
 	public void select(String message){     
+
+        try {
+        	Statement stmt=conn.createStatement();//创建一个Statement对象
+        	String sql="select * from bookdate where name like '%"+message+"%' ";
+        	ResultSet rs=null;
+        	rs=stmt.executeQuery(sql);
+        	while (rs.next())
+            {	
+	        	System.out.print(rs.getString("name")+"\t");
+	        	System.out.print(rs.getString("price")+"\t");
+	        	System.out.print(rs.getString("detail")+"\t");
+	        	System.out.println();
+            }
+        } catch (SQLException e) {
+        	e.printStackTrace();
+        }
     }
 	public void delete(String id){       //删除学生信息操作
 		try {
